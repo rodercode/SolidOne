@@ -1,0 +1,87 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    static public Dock dockA = new DockA(true, "A");
+    static public Dock dockB = new DockB(true, "B");
+    static public Dock dockC = new DockC(true, "C");
+    static public Dock dockD = new DockD(true, "D");
+    static public Dock dockE = new DockE(true, "E");
+    static public List<Dock> dockList = new ArrayList<>();
+
+    public static void main(String[] args) {
+        Print print = new Print();
+        Scanner sc = new Scanner(System.in);
+        Menu menu = new Menu();
+
+        while (true) {
+            print.mainMenu();
+            int userInput = menu.AskInputFromUser();
+
+            if (userInput == 1) {
+                System.out.println(); // newLine
+                for (Dock dock : dockList) {
+                    dock.printVehicle();
+                }
+
+            } else if (userInput == 2) {
+                print.vehicleMenu();
+                System.out.println(); // newLine
+
+                userInput = menu.AskInputFromUser();
+                if (userInput == 1) {
+                    Vehicle van = new Vehicle("Van");
+                    van.setWeight(sc.nextInt());
+
+                    if (dockA.isDockEmpty()) {
+                        dockA.addVehicle(van);
+                        dockList.add(dockA);
+                    } else if (dockB.isDockEmpty()) {
+                        dockB.addVehicle(van);
+                        dockList.add(dockB);
+                    } else {
+                        System.out.println("Unfortunately it is full");
+                    }
+
+                } else if (userInput == 2) {
+                    Vehicle smallTruck = new Vehicle("Small Truck");
+                    smallTruck.setWeight(sc.nextInt());
+
+                    if (dockA.isDockEmpty() && smallTruck.getWeight() < 5000) {
+                        dockA.addVehicle(smallTruck);
+                        dockList.add(dockA);
+                    } else if (dockC.isDockEmpty()) {
+                        dockC.addVehicle(smallTruck);
+                        dockList.add(dockC);
+                    } else if (dockD.isDockEmpty()) {
+                        dockD.addVehicle(smallTruck);
+                        dockList.add(dockD);
+                    } else {
+                        System.out.println("Unfortunately it is full");
+                    }
+
+
+                } else if (userInput == 3) {
+                    Vehicle heavyTruck = new Vehicle("HeavyTruck");
+                    heavyTruck.setWeight(sc.nextInt());
+
+                    if (dockD.isDockEmpty() && heavyTruck.getWeight() < 9000) {
+                        dockD.addVehicle(heavyTruck);
+                        dockList.add(dockD);
+                    } else if (dockE.isDockEmpty()) {
+                        dockE.addVehicle(heavyTruck);
+                        dockList.add(dockE);
+                    } else {
+                        System.out.println("Unfortunately it is full");
+                    }
+
+                }
+            } else if (sc.nextInt() == 3) {
+                System.out.println("Have a nice day");
+                break;
+            }
+            }
+        }
+    }
