@@ -1,0 +1,9 @@
+import java.util.Scanner;
+
+public class Menu {
+    public int AskInputFromUser() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("choose an option: ");
+        return sc.nextInt();
+    }
+}
