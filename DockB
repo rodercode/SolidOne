@@ -1,0 +1,16 @@
+public class DockB extends Dock {
+    public DockB(boolean isDockEmpty, String position) {
+        super(isDockEmpty, position);
+    }
+
+    @Override
+    public void addVehicle(Vehicle vehicle) {
+        super.addVehicle(vehicle);
+        System.out.println("Vehicle registered for Dock B");
+    }
+
+    @Override
+    public void printVehicle() {
+        super.printVehicle();
+    }
+}
