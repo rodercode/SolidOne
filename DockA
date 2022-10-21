@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class DockA extends Dock {
+    public DockA(boolean isDockEmpty, String position) {
+        super(isDockEmpty, position);
+    }
+
+
+    @Override
+    public void addVehicle(Vehicle vehicle) {
+        System.out.println("Vehicle registered for Dock A");
+        super.addVehicle(vehicle);
+
+    }
+
+    @Override
+    public void printVehicle() {
+        setPosition("A");
+        super.printVehicle();
+
+    }
+
+}
