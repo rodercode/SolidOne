@@ -1,0 +1,26 @@
+public class Print {
+    public void mainMenu() {
+        System.out.print("""
+                Unloading station
+                    [1] See parked vehicles
+                    [2] Register new unloading vehicles
+                    [3] End
+                """);
+    }
+
+    public void vehicleMenu() {
+        System.out.print("""
+                Type of vehicles:
+                    [1] Skåpbil
+                    [2] Lätt lastbil
+                    [3] Tung lastbil                       
+                """);
+    }
+
+    public void dockList() {
+        for (Dock dock : Main.dockList) {
+            dock.printVehicle();
+        }
+        System.out.println(); // newLine
+    }
+}
