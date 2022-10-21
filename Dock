@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public abstract class Dock {
+
+    private Vehicle vehicle;
+    private boolean isDockEmpty;
+    private String position;
+
+    public Dock(boolean isDockEmpty, String position) {
+
+        this.isDockEmpty = isDockEmpty;
+        this.position = position;
+    }
+
+    public void addVehicle(Vehicle vehicle) {
+        setDockEmpty(false);
+        this.vehicle = vehicle;
+//        System.out.println();// newLine
+    }
+
+    public void printVehicle() {
+        if (this.vehicle != null) {
+            System.out.println(position + " " + vehicle.getName() +
+                    " " + vehicle.getWeight() + " Kg");
+        }
+    }
+
+    public boolean isDockEmpty() {
+        return isDockEmpty;
+    }
+
+    public void setDockEmpty(boolean dockEmpty) {
+        isDockEmpty = dockEmpty;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+}
